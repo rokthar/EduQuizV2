@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+p, small, h1, h2, h3, h4, span, label, i{
+    font-family: 'Comfortaa', cursive;
+}
+a{
+    text-decoration: none;
+}
+.button{
+    background-color: #457b9d;
+    padding: 4%;
+    border-radius: 8px;
+    border-style: none;
+    color: #fafafa;
+    font-family: 'Comfortaa', cursive;
+    cursor: pointer;
+}
+
+.button-delete{
+    background-color: #e63946;
+    padding: 4%;
+    border-radius: 8px;
+    border-style: none;
+    color: #fafafa;
+    font-family: 'Comfortaa', cursive;
+    cursor: pointer;
+}   

@@ -20,9 +20,16 @@ export class MainComponent implements OnInit{
   ngOnInit(): void {
     this.items = [
       {
-        label:'Preguntas',
-        icon:'pi pi-file',
-        command:() => {this.links('preguntas');}
+        label:'Secciones',
+        icon:'pi pi-bookmark',
+      },
+      {
+        label:'Sobre Nosotros',
+        icon:'pi pi-users'
+      },
+      {
+        label:'Juego',
+        icon:'pi pi-tabletp'
       }
     ];
   }

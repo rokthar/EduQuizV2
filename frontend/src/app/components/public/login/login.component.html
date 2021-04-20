@@ -1,12 +1,14 @@
 <div class="p-grid">
     <div class="p-col-6">
         <p-card header="Iniciar Sesión" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
-            <!-- <ng-template pTemplate="header">
-                <img alt="Card" src="assets/showcase/images/usercard.png">
-            </ng-template> -->
             <input pInputText type="text" name="correo" id="correo" placeholder="correo" [(ngModel)]="correo" />
             <input pInputText type="password" name="clave" id="clave" placeholder="clave" [(ngModel)]="clave" />
-            <button pButton (click)="inciarSesion()">Logearse</button>
+            <ng-template pTemplate="footer">
+                <button class="button p-mr-2 p-mb-2" (click)="inciarSesion()">Logearse</button>
+                <button class="button-delete p-mr-2 p-mb-2" (click)="cancelar()">Cancelar</button>
+                <br><br>
+                <a routerLink="../registrarse"> <span>Registrase</span></a>
+            </ng-template>
         </p-card>
     </div>
 </div>

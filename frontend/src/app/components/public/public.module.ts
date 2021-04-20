@@ -7,11 +7,13 @@ import { PublicRoutingModule } from './public-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
+import { RegistrarseComponent } from './registrarse/registrarse.component';
 
 @NgModule({
     declarations: [
       MainComponent,
-      LoginComponent
+      LoginComponent,
+      RegistrarseComponent
     ],
     exports:[
     ],

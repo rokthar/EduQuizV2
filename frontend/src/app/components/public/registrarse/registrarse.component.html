@@ -1,0 +1,12 @@
+<p-card header="Registrate" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
+    <input maxlength="25" class="caja-texto" id="nombre" placeholder="Nickname" type="text" pInputText [(ngModel)]="nombre"> 
+    <br><br>
+    <input maxlength="25" class="caja-texto" id="correo" placeholder="Correo" type="email" pInputText [(ngModel)]="correo"> 
+    <br><br>
+    <input maxlength="25" class="caja-texto" id="clave1" placeholder="Contraseña" type="password" pInputText [(ngModel)]="clave1"> 
+    <br><br>
+    <input maxlength="25" class="caja-texto" id="clave2" placeholder="Repetir Contraseña" type="password" pInputText [(ngModel)]="clave2"> 
+    <br><br>
+    <button class="button" (click)="registrarUsuarios()"><i class="pi pi-send"> Enviar Solicitud</i></button>
+    <button class="button-delete" (click)="cancelar()"><i class="pi pi-times"> Cancelar</i></button>
+</p-card>

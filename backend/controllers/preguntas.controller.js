@@ -37,4 +37,13 @@ preguntaContoller.getPreguntas = async (req, resp) => {
     resp.json(listaPreguntas);
 }
 
+preguntaContoller.obtenerPreguntaAleatoria = async (req, resp) =>{
+    preguntaModel.count().exec(function(err, resulCount){
+        var rand = Math.floor(Math.random()*resulCount);
+        preguntaModel.findOne().skip(rand).exec(function(err, result){
+            resp.json(result);
+        });
+    });
+}
+
 module.exports = preguntaContoller;

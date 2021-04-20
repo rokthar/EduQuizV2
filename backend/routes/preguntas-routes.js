@@ -12,5 +12,7 @@ router.post('/actualizar/:id', preguntaContoller.updatePregunta);
 router.post('/activar/:id', preguntaContoller.activarPregunta);
 router.post('/desactivar/:id', preguntaContoller.desactivarPregunta);
 router.get('/listar', preguntaContoller.getPreguntas);
+router.get('/aleatoria', preguntaContoller.obtenerPreguntaAleatoria);
+
 
 module.exports = router;

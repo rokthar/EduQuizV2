@@ -1,12 +1,27 @@
 <p-menubar [model]="items">
     <ng-template pTemplate="start">
-        <!-- <img src="assets/showcase/images/primeng.svg" height="40" class="p-mr-2"> -->
+        <img src="../../../../assets/icono-menu.png" height="40" class="p-mr-2">
     </ng-template>
     <ng-template pTemplate="end">
-        <a (click)="logeo()"><i class="pi pi-user"> Iniciar Sesión</i></a>
+        <a (click)="logeo()"><i class="pi pi-user"> <span> Inicar Sesión</span></i></a>
     </ng-template>
 </p-menubar>
-<h1>{{title}}</h1>
+<div class="p-grid p-jc-center container">
+    <div class="p-col-12 secciones">
+        <div class="p-grid p-jc-center">
+            <p class="p-col-12 p-lg-3 p-md-3 p-sm-12 p-m-3 bloques"></p>
+            <p class="p-col-12 p-lg-3 p-md-3 p-sm-12 p-m-3 bloques"></p>
+            <p class="p-col-12 p-lg-3 p-md-3 p-sm-12 p-m-3 bloques"></p>
+        </div>
+    </div>
+    <div class="p-col-11 about">
+        <div class="p-grid p-jc-center">
+            <div class="p-col-12 p-m-3 block-about">
+                <p>About</p>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- <div class="p-grid">
     <div class="p-col-4" *ngFor="let item of lista_preg">
         <p-card header="{{item.usuario}}" subheader="{{item.categoria}}" [style]="{width: '360px'}" styleClass="p-card-shadow">
