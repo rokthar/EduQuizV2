@@ -25,10 +25,6 @@ export class MainComponent implements OnInit{
         command:() => {this.links('preguntas');}
       }
     ];
-    console.log("ola");
-    this.usuario_service.listarUsuarios().subscribe((resp:any)=>{
-      console.log(resp);
-    });
   }
   links(opcion){
     switch (opcion) {

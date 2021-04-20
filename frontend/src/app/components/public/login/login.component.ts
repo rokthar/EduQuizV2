@@ -11,7 +11,8 @@ import { UsuarioService } from 'src/app/services/users.service';
 export class LoginComponent {
     correo=""; clave="";
     constructor(
-        private usuario_service:UsuarioService
+        private usuario_service:UsuarioService,
+        private router:Router
     ){}
 
     inciarSesion(){
@@ -19,9 +20,13 @@ export class LoginComponent {
             "correo":this.correo,
             "clave":this.clave
         }
-        console.log(values);
         this.usuario_service.inicarSesion(values).subscribe((resp:any)=>{
-            console.log(resp);
+            if(resp.siglas == "OK"){
+                sessionStorage.setItem('usuario',JSON.stringify(resp.usuario));
+                this.router.navigateByUrl(Rutas.usuarioPerfil);
+            }else{
+                console.log("No estas Logeado");
+            }
         });
     }
 }

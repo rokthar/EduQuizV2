@@ -5,9 +5,11 @@ import { RouterModule } from '@angular/router';
 import { PrimeNgModule } from 'src/app/prime-ng.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersRoutingModule } from './users-routing.module';
+import { PerfilComponent } from './perfil/perfil.component';
 
 @NgModule({
     declarations: [
+      PerfilComponent
     ],
     exports:[
     ],

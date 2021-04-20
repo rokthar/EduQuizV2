@@ -1,15 +1,14 @@
 const usuarioModel = require('../models/usuarios.model');
+const bcrypt = require('bcrypt');
 
 const usuarioContoller = {};
 
 usuarioContoller.getUsuarios = async (req, resp) => {
-    resp.header ("Access-Control-Allow-Origin", "*");
     const listaUsuarios = await usuarioModel.find();
     resp.json(listaUsuarios);
 }
 
 usuarioContoller.createUsuario =  async (req, resp) => {
-    resp.header ("Access-Control-Allow-Origin", "*");
     const usuario = new usuarioModel(req.body);
     await usuario.save();
     resp.json({
@@ -19,19 +18,16 @@ usuarioContoller.createUsuario =  async (req, resp) => {
 }
 
 usuarioContoller.getUsuario =  async (req, resp) => {
-    resp.header ("Access-Control-Allow-Origin", "*");
     const usuario = await usuarioModel.findById(req.params.id);
     resp.json(usuario)
 }
 
 usuarioContoller.updateUsuario = async  (req, resp) => {
-    resp.header ("Access-Control-Allow-Origin", "*");
     const { id } = req.params;
     const usuario = {
         nombre:req.body.nombre,
         correo:req.body.correo,
-        clave:req.body.clave,
-        updated_at: Date.now()
+        clave:req.body.clave
     };
     await usuarioModel.findByIdAndUpdate(id, {$set:usuario});
     resp.json({
@@ -40,7 +36,6 @@ usuarioContoller.updateUsuario = async  (req, resp) => {
     });
 }
 usuarioContoller.deleteUsuario = async (req, resp) => {
-    resp.header ("Access-Control-Allow-Origin", "*");
     const { id } = req.params;
     const usuario = {
         status:'desactivated'
@@ -53,10 +48,9 @@ usuarioContoller.deleteUsuario = async (req, resp) => {
 }
 
 usuarioContoller.activarUsuario = async (req, resp) => {
-    resp.header ("Access-Control-Allow-Origin", "*");
     const { id } = req.params;
     const usuario = {
-        status:'activated'
+        status:'active'
     };
     await usuarioModel.findByIdAndUpdate(id, {$set:usuario});
     resp.json({
@@ -66,8 +60,11 @@ usuarioContoller.activarUsuario = async (req, resp) => {
 }
 
 usuarioContoller.loginUsuario = async (req, resp) => {   
-    const usuario = await usuarioModel.find({"correo":resp.correo});
-    if (usuario.correo == resp.correo && usuario.clave == resp.clave) {
+    user = req.body;
+    const usuario = await usuarioModel.find({"correo":req.body.correo});
+    const pass = bcrypt.compareSync(req.body.clave, usuario[0].clave, function(err, result) {
+    });
+    if(usuario && pass){
         resp.json({
             'mensaje':'Logeo Correctamente',
             'siglas':'OK',
