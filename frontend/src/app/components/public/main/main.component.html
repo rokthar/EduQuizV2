@@ -1,0 +1,23 @@
+<p-menubar [model]="items">
+    <ng-template pTemplate="start">
+        <!-- <img src="assets/showcase/images/primeng.svg" height="40" class="p-mr-2"> -->
+    </ng-template>
+    <ng-template pTemplate="end">
+        <a (click)="logeo()"><i class="pi pi-user"> Iniciar Sesión</i></a>
+    </ng-template>
+</p-menubar>
+<h1>{{title}}</h1>
+<!-- <div class="p-grid">
+    <div class="p-col-4" *ngFor="let item of lista_preg">
+        <p-card header="{{item.usuario}}" subheader="{{item.categoria}}" [style]="{width: '360px'}" styleClass="p-card-shadow">
+            <ng-template pTemplate="header">
+                <img alt="Card" src="assets/showcase/images/usercard.png">
+            </ng-template>
+            <p>{{item.pregunta}}</p>
+            <ng-template pTemplate="footer">
+                <p-button label="Save" icon="pi pi-check"></p-button>
+                <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+            </ng-template>
+        </p-card>
+    </div>
+</div> -->

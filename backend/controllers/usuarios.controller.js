@@ -1,4 +1,5 @@
 const usuarioModel = require('../models/usuarios.model');
+const bcrypt = require('bcrypt');
 
 const usuarioContoller = {};
 
@@ -26,8 +27,7 @@ usuarioContoller.updateUsuario = async  (req, resp) => {
     const usuario = {
         nombre:req.body.nombre,
         correo:req.body.correo,
-        clave:req.body.clave,
-        updated_at: Date.now()
+        clave:req.body.clave
     };
     await usuarioModel.findByIdAndUpdate(id, {$set:usuario});
     resp.json({
@@ -45,5 +45,36 @@ usuarioContoller.deleteUsuario = async (req, resp) => {
         'mensaje':'Usuario Eliminado Correctamente',
         'siglas':'OK'
     });
+}
+
+usuarioContoller.activarUsuario = async (req, resp) => {
+    const { id } = req.params;
+    const usuario = {
+        status:'active'
+    };
+    await usuarioModel.findByIdAndUpdate(id, {$set:usuario});
+    resp.json({
+        'mensaje':'Usuario Eliminado Correctamente',
+        'siglas':'OK'
+    });
+}
+
+usuarioContoller.loginUsuario = async (req, resp) => {   
+    user = req.body;
+    const usuario = await usuarioModel.find({"correo":req.body.correo});
+    const pass = bcrypt.compareSync(req.body.clave, usuario[0].clave, function(err, result) {
+    });
+    if(usuario && pass){
+        resp.json({
+            'mensaje':'Logeo Correctamente',
+            'siglas':'OK',
+            'usuario':usuario
+        });
+    }else{
+        resp.json({
+            'mensaje':'Logeo Incorrecto',
+            'siglas':'LI'
+        });
+    }
 }
 module.exports = usuarioContoller;
